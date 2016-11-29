@@ -43,5 +43,7 @@ function do_func($job)
     $rs = $phalapi->response();
     $apiRs = $rs->getResult();
     echo $handle.":Result --------->" .$rs->formatResult($apiRs)."\n";
-    return $rs->formatResult($apiRs);
+    $data = $rs->formatResult($apiRs);
+    $rs->output();
+    $job->sendComplete($data);
 }
